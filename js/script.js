@@ -109,11 +109,11 @@ function multipleSplats(amount) {
   for (let i = 0; i < amount; i++) {
     const color = config.COLORFUL ? generateColor() : Object.assign({}, config.POINTER_COLOR.getRandom());
     color.r *= 10.0;
-    color.g *= 10.0;
-    color.b *= 10.0;
+    color.g *= 9.0;
+    color.b *= 8.0;
     const x = canvas.width * Math.random();
     const y = canvas.height * Math.random();
-    const dx = 1000 * (Math.random() - 0.5);
+    const dx = 1000 * (Math.random() - 0.51);
     const dy = 1000 * (Math.random() - 0.5);
     splat(x, y, dx, dy, color);
   }
@@ -121,7 +121,7 @@ function multipleSplats(amount) {
 
 let _randomSplats = false;
 let _audioReact = false;
-let colorRange = ["#FF0000","#FF0001"];
+let colorRange = ["#FF0000","#FF0002"];
 let colorConfig = null;
 let splatRadiusModulationEnabled = false;
 let baseRadius = config.SPLAT_RADIUS;
@@ -661,7 +661,7 @@ const blurVertexShader = compileShader(
 
     void main () {
         vUv = aPosition * 0.5 + 0.5;
-        float offset = 1.33333333;
+        float offset = 1.333344;
         vL = vUv - texelSize * offset;
         vR = vUv + texelSize * offset;
         gl_Position = vec4(aPosition, 0.0, 1.0);
